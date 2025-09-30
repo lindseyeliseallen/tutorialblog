@@ -1,5 +1,5 @@
 # Importing & Visualizing: BMI vs Age
-**Objective:** Learn how to create a scatter plot using Python, pandas, and matplotlib to explore patterns.
+**Objective:** Learn how to create a scatter plot with regression lines using Python, pandas, matplotlib, and numpy to explore patterns.
 
 ## Introduction
 Understanding how to load in your own data to python and create visualizations of your data is import in finding trends. In this tutorial, we will be using the example of how BMI (Body Mass Index) changes with age in a small patient dataset. Visualizing these relationships helps identify trends, detect outliers, and generate hypotheses about health behaviors.
@@ -12,7 +12,7 @@ This guide is for those who want to practice data wrangling and visualization in
 
  - Add color coding and labels for better insights.
 
- - Use Markdown tables and optionally LaTeX for clarity.
+ - Add a regression line to a plot to show correlations in data.
 
 ### Step 1: Load the Dataset
 Here is an example of how to load in your data using **pandas**. This is where we will put in our own data that we want to use for data visualization. 
@@ -54,7 +54,7 @@ df.head(5)
 
 
 ### Step 3: Create a Scatter Plot
-Now we will use our DataFrame to create a scatter plot. This is where we will use matplotlib to help make our plot. We will plot BMI vs. Age and use colors to distinguish genders.
+Now we will use our DataFrame to create a scatter plot. This is where we will use **matplotlib** to help make our plot. We will plot BMI vs. Age and use colors to distinguish genders.
 Tips:
  - Make sure to import matplotlib in python.
  - Decide if there are any variables that you want to distinguish by color.
@@ -70,7 +70,7 @@ colors = {'F': 'pink', 'M': 'blue'}
 plt.figure(figsize=(8,6))
 for gender in df['Gender'].unique():
     subset = df[df['Gender'] == gender]
-    plt.scatter(subset['Age'], subset['BMI'], label=gender, color=colors[gender], s=100)
+    plt.scatter(subset['Age'], subset['BMI'], label=gender, color=colors[gender])
 
 # Add labels, legend, and gridlines
 plt.xlabel('Age')
@@ -82,3 +82,23 @@ plt.show()
 ```
 ![Scatter plot of BMI vs Age](bmi_scatterplot.png)
 *Figure 1: Scatter plot showing BMI vs Age, colored by gender.*
+
+### Step 4: Add a Regression Line
+To see further correlation in date by looking at a scatterplot, we can add a regression line. This will help show trends in our data. To do this, we will need to use **numpy**.
+Here is the code that we would use to create a plot with a regression line:
+
+```python
+x = df['Age']
+y = df['BMI']
+m, b = np.polyfit(x, y, 1)
+
+plt.figure(figsize=(8,6))
+plt.scatter(x, y, color='green', s=100)
+plt.plot(x, m*x + b, color='red', label=f'Trend line')
+plt.xlabel('Age')
+plt.ylabel('BMI')
+plt.title('BMI vs Age with Trend Line')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
