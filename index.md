@@ -80,3 +80,5 @@ plt.legend(title='Gender')
 plt.grid(True)
 plt.show()
 ```
+![Scatter plot of BMI vs Age](bmi_scatterplot.png)
+*Figure 1: Scatter plot showing BMI vs Age, colored by gender.*
