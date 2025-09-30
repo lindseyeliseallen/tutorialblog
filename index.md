@@ -15,7 +15,7 @@ This guide is for those who want to practice data wrangling and visualization in
  - Add a regression line to a plot to show correlations in data.
 
 ### Step 1: Load the Dataset
-Here is an example of how to load in your data using **pandas**. This is where we will put in our own data that we want to use for data visualization. 
+Here is an example of how to load in your data using **pandas**. This is where we will put in our own data that we want to use for data visualization. In this step, we define a Python dictionary where each key represents a column in our dataset and the values are lists representing each row. Converting this dictionary into a DataFrame gives us a structured table that pandas can handle efficiently. Once the data is in a DataFrame, we can easily inspect, filter, and plot it.
 Tips:
  - Make sure to import pandas before loading in the data.
  - Create a dictionary using keys (your column names: PatientID, Age, etc.)
@@ -38,9 +38,10 @@ data = {
 
 df = pd.DataFrame(data)
 ```
+You can learn more about the `DataFrame` object in the [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
 
 ### Step 2: Preview the Data
-Before plotting, it is useful to view the data that you just imported to make sure there are no issues. Use the head() function to see a number of the first rows. Here is an example of how we would see the first 5 rows of our BMI vs. Age data:
+Before plotting, it is useful to view the data that you just imported to make sure there are no problems. Previewing the data allows us to catch issues such as missing values, typos, or unexpected data types. By checking the first few rows, we also gain a sense of the distribution of values and whether color-coding or subgroup comparisons will make sense in the scatter plot. Use the head() function to see a number of the first rows. Here is an example of how we would see the first 5 rows of our BMI vs. Age data:
 ```python
 df.head(5)
 ```
@@ -54,7 +55,8 @@ df.head(5)
 
 
 ### Step 3: Create a Scatter Plot
-Now we will use our DataFrame to create a scatter plot. Scatter plots are particularly useful because each point represents an individual, making it easy to see trends, clusters, or outliers. This is where we will use **matplotlib** to help make our plot. We will plot BMI vs. Age and use colors to distinguish genders.
+Now we will use our DataFrame to create a scatter plot. Scatter plots are particularly useful because each point represents an individual, making it easy to see trends, clusters, or outliers. This is where we will use **matplotlib** to help make our plot. We will plot BMI vs. Age and use colors to distinguish genders. Titles and axis labels make the plot self-explanatory, and gridlines help the viewer read exact values more easily. We use matplotlib’s `pyplot` module to create scatter plots and customize visuals. For detailed instructions and additional plotting options, see the [Matplotlib pyplot documentation](https://matplotlib.org/stable/api/pyplot_summary.html).
+
 Tips:
  - Make sure to import matplotlib in python.
  - Decide if there are any variables that you want to distinguish by color.
